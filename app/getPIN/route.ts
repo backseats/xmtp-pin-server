@@ -1,5 +1,15 @@
 import getPINWithTimestamp from '../getPINWithTimestamp';
 
+export async function OPTIONS(req: Request) {
+  return new Response(null, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  });
+}
+
 export async function POST(req: Request) {
   const body = await req.json();
   const { secret } = body;
@@ -12,7 +22,7 @@ export async function POST(req: Request) {
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'POST',
-        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
       },
     });
 
